@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EcommerceTest</title>
+    <title>EcommerceDemo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css", media: 'all', 'data-turbolinks-track' => true %>
   </head>
-
+  
   <body>
+  <%= render "layouts/header" %>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <div class="container">
+    <div class="cart-text"><%= render 'layouts/cart' %></div>
     <%= yield %>
+  </div>
   </body>
 </html>
