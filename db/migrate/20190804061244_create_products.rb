@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.text :image
       t.string :name
       t.decimal :price
-      t.belongs_to :category, foreign_key: true
+      t.integer :category_id
 
       t.timestamps
     end

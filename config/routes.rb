@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]
   post 'payments/verify' => "payments#order_verification"
   resources :payments, only: [:new, :create]
+  devise_scope :user do
+    get '/user_profile', :to => 'registrations#show'
+  end
 end

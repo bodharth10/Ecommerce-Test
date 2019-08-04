@@ -1,7 +1,8 @@
 class CategoriesController < ApplicationController
-  before_action :set_categories, only: [:show, :edit, :update, :destroy]
+  before_action :get_categories, only: [:edit, :update, :destroy]
 
   skip_before_action :authenticate_user!, only: :show
+  before_action  :admin_user, only: %i[new create edit]
 
   def index
     @category = Category.all
@@ -44,17 +45,22 @@ class CategoriesController < ApplicationController
     end
   end
 
-
   def show
+    @category = Category.search_filter(params[:category_id], params[:price])
+    @order_item = current_order.order_items.new
+    respond_to do | format |
+      format.html {}
+      format.js {}
+    end
   end
 
   private
 
-  def set_categories
+  def get_categories
     @category = Category.find(params[:id])
   end
 
   def category_params
     params.require(:category).permit(:name)
   end
-end
+end  

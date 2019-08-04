@@ -3,8 +3,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
     create_table :orders do |t|
       t.integer :quantity
       t.decimal :total
-      t.belongs_to :user, foreign_key: true
-      # t.belongs_to :product, foreign_key: true
+      t.integer :user_id
+      t.integer :product_id
 
       t.timestamps
     end

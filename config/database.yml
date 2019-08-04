@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: ecommerce_test
+  database: ecommerce_demo
   username: root
   host: localhost
   password: root
 
 test: &test
   <<: *default
-  database: ecommerce_test
+  database: ecommerce_demo
   username: root
   password: root
   host: localhost
@@ -21,7 +21,7 @@ production:
   <<: *default
   adapter: postgresql
   encoding: unicode
-  database: ecommerce_test_prod
+  database: ecommerce_demo_prod
   username: root
   password: root
   host: localhost

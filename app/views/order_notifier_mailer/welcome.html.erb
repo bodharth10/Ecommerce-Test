@@ -1,0 +1,17 @@
+<%= @current_user.email.split("@").first.capitalize%>,
+
+<p>Welcome.</p>
+<p> You have ordered <%= @ordered_items.count %> items</p>
+<p>Details are :</p>
+
+<% @ordered_items.each do | order_item | %>
+  <h4><%= Product.find(order_item.product_id).name %></h4>
+  <h4>Unit Price: <span style="color: green"><%= number_to_currency order_item.unit_price %></span></h4>
+  <h4>Item count: <%= "#{order_item.quantity.to_i}" %></h4>
+  </hr>
+<%end%>
+
+<h4>Total Price: <span style="color: green"><%= number_to_currency @ordered_items.pluck(:total_price).inject(:+) %></span>
+</h4>
+
+<p>Thanks</p>
