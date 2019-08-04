@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :quantity
       t.decimal :total
       t.belongs_to :user, foreign_key: true
-      t.belongs_to :product, foreign_key: true
+      # t.belongs_to :product, foreign_key: true
 
       t.timestamps
     end
