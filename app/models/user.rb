@@ -30,7 +30,7 @@ class User < ApplicationRecord
   end
    
   def twilio_client
-    Twilio::REST::Client.new(TWILLIO_APP_KEY,TWILLIO_APP_SECRET)
+    Twilio::REST::Client.new(ENV["TWILLIO_APP_KEY"],ENV["TWILLIO_APP_SECRET"])
   end
 
   def otp_verification(entered_pin)
