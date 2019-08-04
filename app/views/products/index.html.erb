@@ -1,0 +1,41 @@
+<div class="container">
+
+  <div style="display: inline-flex;">
+    <div class="form-group">
+      <label>Sort by Category:</label>
+      <%= select_tag :category_id , options_for_select(Category.pluck(:name, :id)), include_blank: "All", class: "search_filter form-group"%>
+    </div>
+
+    <div class="form-group" style="margin-left: 10px">
+      <label>Sort by Price:</label>
+      <%= select_tag :price , options_for_select([["High to low", 'desc'], ["Low to high", "asc"]]),include_blank: "select", class: "search_filter"%>
+    </div>
+  </div>  
+
+  <div id="products" class="row list-group">
+    <% @products.each do | product |%>
+      <div class="item  col-xs-4 col-lg-4">
+        <div class="thumbnail">
+          <img class="group list-group-image" src="<%= product.image.url %>" alt="" />
+        <div class="product-name"><%= link_to product.name.truncate(20),product_path(product.id) %></div>
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
+              <%= render "product_row", product: product, order_item: @order_item %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
+
+<style type="text/css">
+  .product-name{
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    text-align: center;
+    padding: 5px;
+    margin: 8px 0 8px 0;
+    background-color: gainsboro;
+  }
+</style>

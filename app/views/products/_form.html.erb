@@ -1,0 +1,37 @@
+<%= form_for(product) do |f| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table class = "table">
+    <tr>
+    <td><%= f.label :name %></td>
+    <td><%= f.text_field :name, :class=>"form-control" %></td>
+  </tr>
+
+  <tr>
+    <td><%= f.label :price %></td>
+    <td><%= f.text_field :price, :class=>"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :category %></td>
+    <td><%= f.select :category_id ,options_for_select(Category.pluck(:name, :id)), :class=>"btn btn-primary dropdown-toggle" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :image %></td>
+    <td><%= f.file_field :image, :class=>"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= f.submit %></td>
+    <td></td>
+  </tr>
+</table>
+  <%= link_to '<<Back', products_path %>
+<% end %>

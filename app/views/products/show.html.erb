@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<div>
+	<% if current_user && current_user.role == "admin" %>
+		<%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary" %> 
+	
+		<%= button_to "delete", {:controller => :products,
+    :action => 'destroy', :id => @product.id }, :method => :delete, class: "btn btn-primary" %>
+	<% end %>
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+	<h1>Categories</h1>
+	<table class="table">
+		<th>Name</th>
+		<% @category.each do |category| %>
+			<tr>
+				<td><%= category.name %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
