@@ -6,11 +6,11 @@ class Product < ApplicationRecord
   has_many :order_items
   belongs_to :category
 
-  searchable do
-    text :name, :base_price, :image
-    time :created_at
-    string :base_price
-  end
+  # searchable do
+  #   text :name, :base_price, :image
+  #   time :created_at
+  #   string :base_price
+  # end
 
   mount_uploader :image, ProductUploader
 
