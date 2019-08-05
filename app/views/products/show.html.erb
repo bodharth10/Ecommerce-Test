@@ -10,11 +10,22 @@
   <%= @product.price %>
 </p>
 
-<div>
+<p>
+	<img class="list-group-image" src="<%= @product.image.url %>" alt="" />
+</p>
+
+<div style="display: -webkit-inline-box">
 	<% if current_user && current_user.role == "admin" %>
 		<%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary" %> 
 	
 		<%= button_to "delete", {:controller => :products,
-    :action => 'destroy', :id => @product.id }, :method => :delete, class: "btn btn-primary" %>
+    :action => 'destroy', :id => @product.id }, :method => :delete, class: "btn btn-danger", style: 'margin-left: 10px' %>
 	<% end %>
 </div>
+
+<style type="text/css">
+	.list-group-image{
+		width: 300px;
+		height: 300px;
+	}
+</style>

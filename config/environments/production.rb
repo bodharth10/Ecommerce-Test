@@ -99,4 +99,12 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
+  config.action_mailer.smtp_settings = {
+    :address              => 'smtp.gmail.com',
+    :port                 =>  587,
+    :domain               => 'gmail.com',
+    :user_name            => ENV["GMAIL_APP_KEY"],
+    :password             => ENV["GMAIL_APP_SECRET"],
+    :enable_starttls_auto => true
+  }
 end

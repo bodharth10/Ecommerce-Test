@@ -29,19 +29,19 @@
       <%end%>
     </form>
   </div>
-
-  <div id="nav-subnav">
-    <div class="tabbable">
-      <ul class="nav nav-tabs" style="background-color: #D3D3D3">
-        
-        <% if user_signed_in? %>
-          <li><a href="/products/order_history">Orders</a></li>
-        <%end%>
-        <% if user_signed_in? && current_user.admin? %>
-          <li><a href="/categories/new">Add Category</a></li>
-          <li><a href="/products/new">Add Product</a></li>
-        <%end%>
-      </ul>
-    </div>
-  </div>
 </nav>
+
+<div id="nav-subnav">
+  <div class="tabbable container">
+    <ul class="nav nav-tabs">
+      
+      <% if user_signed_in? %>
+        <li><a href="/products/order_history">Orders</a></li>
+      <%end%>
+      <% if user_signed_in? && current_user.admin? %>
+        <li><a href="/categories/new">Manage Category</a></li>
+        <li><a href="/products/new">Manage Products</a></li>
+      <%end%>
+    </ul>
+  </div>
+</div>

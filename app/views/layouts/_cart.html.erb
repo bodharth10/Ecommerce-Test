@@ -1,1 +1,1 @@
-<%= link_to "#{current_order.order_items.size}(#{number_to_currency current_order.order_items.pluck(:total_price).inject(:+)})", cart_path, class: "glyphicon glyphicon-shopping-cart pull-right" %>
+<%= link_to "#{current_order.order_items.size}(#{number_to_currency current_order.order_items.pluck(:total_price).inject(:+)})", cart_path, class: "glyphicon glyphicon-shopping-cart pull-right", style: 'height:40px' %>

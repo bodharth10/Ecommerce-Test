@@ -3,12 +3,12 @@
   <div style="display: inline-flex;">
     <div class="form-group">
       <label>Sort by Category:</label>
-      <%= select_tag :category_id , options_for_select(Category.pluck(:name, :id)), include_blank: "All", class: "search_filter form-group"%>
+      <%= select_tag :category_id , options_for_select(Category.pluck(:name, :id)), include_blank: "All", class: "search_filter form-group form-control"%>
     </div>
 
     <div class="form-group" style="margin-left: 10px">
       <label>Sort by Price:</label>
-      <%= select_tag :price , options_for_select([["High to low", 'desc'], ["Low to high", "asc"]]),include_blank: "select", class: "search_filter"%>
+      <%= select_tag :price , options_for_select([["High to low", 'desc'], ["Low to high", "asc"]]),include_blank: "select", class: "search_filter form-control"%>
     </div>
   </div>  
 
@@ -17,9 +17,14 @@
       <div class="item  col-xs-4 col-lg-4">
         <div class="thumbnail">
           <img class="group list-group-image" src="<%= product.image.url %>" alt="" />
-        <div class="product-name"><%= link_to product.name.truncate(20),product_path(product.id) %></div>
+          <div class="product-name row">
+            <h3><%= link_to product.name.truncate(20),product_path(product.id) %></h3>
+            <h4 class="pull-left"> 
+              <span style="color: green"><%= number_to_currency product.price %></span>
+            </h4>
+          </div>
           <div class="row">
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-6">
               <%= render "product_row", product: product, order_item: @order_item %>
             </div>
           </div>
@@ -31,11 +36,19 @@
 
 <style type="text/css">
   .product-name{
-    border-bottom: 1px solid;
-    border-top: 1px solid;
-    text-align: center;
-    padding: 5px;
-    margin: 8px 0 8px 0;
-    background-color: gainsboro;
+    padding: 0 24px;
+  }
+  .row{
+    margin: 0;
+    padding: 10px;
+  }
+  .thumbnail{
+    padding: 0
+  }
+  h4{
+    margin: 0
+  }
+  .col-xs-6{
+    padding: 0
   }
 </style>

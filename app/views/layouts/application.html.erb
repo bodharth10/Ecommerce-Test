@@ -11,13 +11,22 @@
   </head>
   
   <body>
-  <%= render "layouts/header" %>
+    <%= render "layouts/header" %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <div class="container">
-    <div class="cart-text"><%= render 'layouts/cart' %></div>
-    <%= yield %>
-  </div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <% if user_signed_in? %>
+        <div class="cart-text"><%= render 'layouts/cart' %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+
+    <style type="text/css">
+      .cart-text{
+        font-size: 18px;
+        height: 40px
+      }
+    </style>
   </body>
 </html>

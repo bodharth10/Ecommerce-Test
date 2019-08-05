@@ -1,4 +1,4 @@
-<table class = "table">
+<table class = "table table-striped">
   <tr>
     <th>Category</th>
     <th>Prodcut Title</th>
@@ -7,7 +7,9 @@
     <th>Amount paid</th>
     <th>Order Data</th>
     <th>Status</th>
-    <th>Placed By</th>
+    <% if current_user && current_user.role == "admin" %>
+      <th>Placed By</th>
+    <% end %>
   </tr>
   <% @order_history.each do | order | %>
     <tr>
@@ -18,7 +20,9 @@
       <td><%= order.total%></td>
       <td><%= Date.today %></td>
       <td><span style="color: green"><%= "Pending" %></span></td>
-      <td><%= link_to order.user.email, user_profile_path(id: order.user)%></td>
+      <% if current_user && current_user.role == "admin" %>
+        <td><%= link_to order.user.email, user_profile_path(id: order.user)%></td>
+      <% end %>
     </tr>
   <%end%>
 </table>

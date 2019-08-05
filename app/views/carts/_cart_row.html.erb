@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-xs-8">
       <h4><%= product.name %></h4>
+      <img class="list-group-image" src="<%= product.image.url %>" alt="<%= product.name %>" />
     </div>
 
     <div class="col-xs-4">
@@ -15,7 +16,7 @@
           </div>
           <div class="col-xs-8 text-right">
             <div class="btn-group">
-              <%= f.submit "Update Quantity", class: "btn btn-primary" %>
+              <%= f.submit "Update Quantity", class: "btn btn-success" %>
               <%= link_to "Delete", order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.name}' from your cart?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
             </div>
           </div>
@@ -26,3 +27,10 @@
 
   </div>
 </div>
+
+<style type="text/css">
+  .list-group-image{
+    width: 100px;
+    height: 100px;
+  }
+</style>

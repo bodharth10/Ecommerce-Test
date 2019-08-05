@@ -13,23 +13,23 @@
   <table class = "table">
     <tr>
     <td><%= f.label :name %></td>
-    <td><%= f.text_field :name, :class=>"form-control" %></td>
+    <td><%= f.text_field :name, :class=>"form-control", required: true %></td>
   </tr>
 
   <tr>
     <td><%= f.label :price %></td>
-    <td><%= f.text_field :price, :class=>"form-control" %></td>
+    <td><%= f.text_field :price, :class=>"form-control", required: true %></td>
   </tr>
   <tr>
     <td><%= f.label :category %></td>
-    <td><%= f.select :category_id ,options_for_select(Category.pluck(:name, :id)), :class=>"btn btn-primary dropdown-toggle" %></td>
+    <td><%= f.select :category_id ,options_for_select(Category.pluck(:name, :id)), {}, :class=>"dropdown-toggle form-control" %></td>
   </tr>
   <tr>
     <td><%= f.label :image %></td>
     <td><%= f.file_field :image, :class=>"form-control" %></td>
   </tr>
   <tr>
-    <td><%= f.submit %></td>
+    <td><%= f.submit params[:action]=='new' ? 'Create' : 'Update', class: "btn btn-primary" %></td>
     <td></td>
   </tr>
 </table>

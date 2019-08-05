@@ -22,7 +22,7 @@ class User < ApplicationRecord
   def send_pin
     begin
       mob_number = "+" + country_code + phone_number unless country_code.match("\\+")
-      twilio_client.messages.create( to: "#{mob_number}", from: "+12055830340", body: "Your one time password for order is : #{otp}")
+      twilio_client.messages.create( to: "#{mob_number}", from: ENV["TWILLIO_APP_NUMBER"], body: "Your one time password for order is : #{otp}")
       puts "otp: #{otp}"
     rescue Exception => e
       puts e.message

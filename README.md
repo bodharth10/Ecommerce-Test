@@ -1,24 +1,65 @@
-# README
+### Ecommerce Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Its a Ecommerce application built in Ruby on Rails . 
 
-Things you may want to cover:
 
-* Ruby version
+## Instructions for Local Setup
 
-* System dependencies
+* Clone the Repository
+```
+    https://github.com/bodharth1004/Ecommerce-Test.git
+    cd ecommerce-test
+```
 
-* Configuration
+* Install the gems and dependencies.
+```
+    bundle install.
+    Install Postgres.
+    Install Sunspot Solr.
+```
 
-* Database creation
 
-* Database initialization
+* Create database and run migrations.
+ 
+```
+    bundle exec rake db:setup
+    bundle exec rake db:seed
 
-* How to run the test suite
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+* Start the server
+```
+    rails s
+```
 
-* Deployment instructions
+* Admin credentials: 
+  Email: admin_user@admin.com
+  password: admin123
 
-* ...
+* Customer credentials: 
+  Email: bodharthlonkar@gmail.com.com
+  password: 123456
+
+### Funtionalities 
+* User signup/signin by devise
+*  Two Types Of Roles Admin and User roles
+  * Admin : 
+	  * Admin can manage orders.
+	  * Admin can manage categories.
+	  * Admin can manage products.
+
+  ## User: 
+        Can add Items to cart and can purchase the items after the complition of payment we send OTP to user for Order Confirmation . Which is done by using Twilio gem .
+        After the verification of otp mail is sent to user using OrderNotifier . 
+
+        User can Add , update and delete Items from the cart . 
+
+
+* Image upload functionality is implemented using carrierwave gem.
+
+
+## Database Architechure
+*** Database architecture diagram is present in erd.pdf file . 
+
+
+

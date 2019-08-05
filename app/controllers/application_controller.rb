@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_order
   def current_order
     if !session[:order_id].nil?
-      Order.find(session[:order_id])
+      order = Order.find_by(id: session[:order_id])
+      Order.new unless order.present?
+      return order
     else
       Order.new
     end

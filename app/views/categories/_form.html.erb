@@ -14,10 +14,10 @@
   <table class = 'table'>
     <tr>
       <td><%=f.label :name %></td>
-      <td><%= f.text_field :name%></td>
+      <td><%= f.text_field :name, :class=>"form-control", required: true %></td>
     <tr>
       <tr>
-        <td><%= f.submit "Save"%></td>
+        <td><%= f.submit "Save", class: "btn btn-primary" %></td>
         <td></td>
       </tr>
   </table>
